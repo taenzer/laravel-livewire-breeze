@@ -17,7 +17,7 @@ services:
             # Laravel
             - BUILD_NR=0
             - BUILD_DATE=1698271214
-            - APP_NAME=HTFT
+            - APP_NAME=TaenzersFotobox
             - APP_ENV=local
             - APP_KEY=base64:Onk7H7lMdWjZXZPvkL5NBWGm7Kxb0F4Ptf7pxpR2CkU=
             - APP_DEBUG=true
@@ -28,13 +28,13 @@ services:
             - LOG_LEVEL=debug
 
             - DB_CONNECTION=mysql
-            - DB_HOST=htft-db
+            - DB_HOST=db
             - DB_PORT=3306
-            - DB_DATABASE=htft
+            - DB_DATABASE=laravel
             - DB_USERNAME=laravel
             - DB_PASSWORD=laravel
         volumes:
-            - ./backend:/var/www/html:rw
+            - .:/var/www/html:rw
         networks:
             - app_network
     db:
@@ -43,11 +43,11 @@ services:
         # If you really want to use MySQL, uncomment the following line
         #image: mysql:8.0.27
         command: "--default-authentication-plugin=mysql_native_password"
-        hostname: htft-db
+        hostname: db
         volumes:
             - db_data:/var/lib/mysql
         environment:
-            - MYSQL_DATABASE=htft
+            - MYSQL_DATABASE=laravel
             - MYSQL_ROOT_PASSWORD=laravel
             - MYSQL_USER=laravel
             - MYSQL_PASSWORD=laravel
