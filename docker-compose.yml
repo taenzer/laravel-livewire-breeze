@@ -8,7 +8,8 @@ services:
               cp .docker/php.ini-development /etc/php82/php.ini ;\
               cp .docker/xdebug.ini /etc/php82/conf.d/50_xdebug.ini ;\
               npm install ;\
-              npm run build ;\
+              npm run dev -- --host 0.0.0.0 --port 5173 & \
+              sleep 3s && echo "http://localhost:5173" > public/hot ;\ 
               php artisan serve --host 0.0.0.0 --port 80"
         ports:
             - "80:80"
